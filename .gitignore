@@ -1,0 +1,8 @@
+# Linux
+.cache/
+build/
+
+# Windows
+.vs/
+CMakeCache.txt
+out/

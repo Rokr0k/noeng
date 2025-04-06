@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.31)
 
 project(Nanbou)
 
@@ -12,13 +12,21 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL3)
 
-add_executable(nanbou
+add_executable(nanbou WIN32
     "src/main.cpp"
 )
 target_link_libraries(nanbou SDL3::SDL3)
 
 add_custom_command(TARGET nanbou POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    $<TARGET_RUNTIME_DLLS:nanbou>
-    $<TARGET_FILE_DIR:nanbou>
+    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
+    "${CMAKE_CURRENT_SOURCE_DIR}/res"
+    "$<TARGET_FILE_DIR:nanbou>/res"
 )
+
+if (WIN32)
+    add_custom_command(TARGET nanbou POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_RUNTIME_DLLS:nanbou>
+        $<TARGET_FILE_DIR:nanbou>
+    )
+endif()

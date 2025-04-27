@@ -14,6 +14,8 @@ FetchContent_MakeAvailable(SDL3)
 
 add_executable(nanbou WIN32
     "src/main.cpp"
+    "src/game.cpp"
+    "src/player.cpp"
 )
 target_link_libraries(nanbou SDL3::SDL3)
 

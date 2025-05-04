@@ -1,10 +1,11 @@
 #pragma once
 
+#include "sprite.hpp"
 #include <SDL3/SDL.h>
 
 namespace nanbou
 {
-class Player
+class Player : public Sprite
 {
   public:
     Player(SDL_Renderer *renderer);
@@ -12,7 +13,7 @@ class Player
     Player(const Player &) = delete;
     Player &operator=(const Player &) = delete;
 
-    ~Player();
+    ~Player() override;
 
     void SetInputVector(float x, float y, float speed);
 
@@ -20,8 +21,6 @@ class Player
     void Render() const;
 
   private:
-    SDL_Texture *sprite;
-    float x, y;
     float ix, iy;
 };
 } // namespace nanbou

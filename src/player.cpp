@@ -3,16 +3,12 @@
 namespace nanbou
 {
 Player::Player(SDL_Renderer *renderer)
-    : sprite(nullptr), x(0), y(0), ix(0), iy(0)
+    : Sprite(renderer, "res/redbull.bmp", {0, 0, 50, 50}), ix(0), iy(0)
 {
-    SDL_Surface *surface = SDL_LoadBMP("res/redbull.bmp");
-    sprite = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_DestroySurface(surface);
 }
 
 Player::~Player()
 {
-    SDL_DestroyTexture(sprite);
 }
 
 void Player::SetInputVector(float x, float y, float speed)
@@ -31,15 +27,12 @@ void Player::SetInputVector(float x, float y, float speed)
 
 void Player::Update(double delta)
 {
-    x += ix * delta;
-    y += iy * delta;
+    Rect().x += ix * delta;
+    Rect().y += iy * delta;
 }
 
 void Player::Render() const
 {
-    SDL_Renderer *renderer = SDL_GetRendererFromTexture(sprite);
-
-    SDL_FRect dst{x - 25, y - 25, 50, 50};
-    SDL_RenderTexture(renderer, sprite, nullptr, &dst);
+    Sprite::Render();
 }
 } // namespace nanbou

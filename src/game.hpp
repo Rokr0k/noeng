@@ -1,7 +1,10 @@
 #pragma once
 
-#include <SDL3/SDL.h>
+#include "pbullet.hpp"
 #include "player.hpp"
+#include <SDL3/SDL.h>
+#include <memory>
+#include <vector>
 
 namespace nanbou
 {
@@ -23,6 +26,7 @@ class Game
 
     bool b_quit;
 
-    Player *player;
+    std::unique_ptr<Player> player;
+    std::vector<std::unique_ptr<PBullet>> pbullets;
 };
 } // namespace nanbou

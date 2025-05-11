@@ -1,8 +1,8 @@
-#include "pbullet.hpp"
+#include "ebullet.hpp"
 
 namespace nanbou
 {
-PBullet::PBullet(SDL_Renderer *renderer, const SDL_FPoint &pos,
+EBullet::EBullet(SDL_Renderer *renderer, const SDL_FPoint &pos,
                  const SDL_FPoint &dir)
     : Sprite(renderer, "res/poo.bmp",
              {pos.x - 25 * 0.5f, pos.y - 25 * 0.5f, 25, 25}),
@@ -10,17 +10,17 @@ PBullet::PBullet(SDL_Renderer *renderer, const SDL_FPoint &pos,
 {
 }
 
-PBullet::~PBullet()
+EBullet::~EBullet()
 {
 }
 
-void PBullet::Update(double delta)
+void EBullet::Update(double delta)
 {
     Rect().x += dir.x * delta;
     Rect().y += dir.y * delta;
 }
 
-void PBullet::Render() const
+void EBullet::Render() const
 {
     Sprite::Render();
 }

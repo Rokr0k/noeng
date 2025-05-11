@@ -18,6 +18,7 @@ add_executable(nanbou WIN32
     "src/sprite.cpp"
     "src/player.cpp"
     "src/pbullet.cpp"
+    "src/ebullet.cpp"
 )
 target_link_libraries(nanbou SDL3::SDL3)
 

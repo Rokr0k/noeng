@@ -19,9 +19,6 @@ Sprite::~Sprite()
 void Sprite::Render() const
 {
     SDL_Renderer *renderer = SDL_GetRendererFromTexture(texture);
-
-    SDL_FRect dst{rect.x - rect.w * 0.5f, rect.y - rect.h * 0.5f, rect.w,
-                  rect.h};
-    SDL_RenderTexture(renderer, texture, nullptr, &dst);
+    SDL_RenderTexture(renderer, texture, nullptr, &rect);
 }
 } // namespace nanbou

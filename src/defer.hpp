@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 namespace nanbou
 {
 template <typename Deferred> class Defer
@@ -28,4 +30,9 @@ template <typename Deferred> class Defer
     Deferred deferred;
     bool b_cancelled;
 };
+
+template <typename Deferred> Defer<Deferred> MakeDefer(Deferred &&deferred)
+{
+    return std::forward<Deferred>(deferred);
+}
 } // namespace nanbou

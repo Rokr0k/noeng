@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMEPAD);
     auto sdl_quit_deferrer = nanbou::MakeDefer([]() { SDL_Quit(); });
 
     nanbou::Game game;
